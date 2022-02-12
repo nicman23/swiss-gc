@@ -1731,15 +1731,13 @@ void load_game() {
 		if(is_redump_disc((dvddiskid*)&GCMDisk) && !valid_gcm_size(&GCMDisk, curFile.size)) {
 			if(swissSettings.audioStreaming) {
 				DrawDispose(msgBox);
-				msgBox = DrawPublish(DrawMessageBox(D_WARN, "File is a bad dump and is not playable.\nPlease attempt recovery using NKit."));
+				msgBox = DrawPublish(DrawMessageBox(D_WARN, "fuck you"));
 				sleep(5);
 				DrawDispose(msgBox);
 				return;
 			}
 			else {
 				DrawDispose(msgBox);
-				msgBox = DrawPublish(DrawMessageBox(D_WARN, "File is a bad dump, but may be playable.\nPlease attempt recovery using NKit."));
-				sleep(5);
 			}
 		}
 	}
