@@ -32,7 +32,7 @@ GECKOSERVER   = pc/usbgecko
 .NOTPARALLEL:
 
 # Ready to go .7z file with every type of DOL we can think of
-all: clean compile-patches compile build recovery-iso build-gci build-AR build-geckoserver package
+all: clean compile-patches compile build recovery-iso build-gci build-AR package
 
 # For dev use only, avoid the unnecessary fluff
 dev: clean compile-patches compile
@@ -107,7 +107,6 @@ package:   # create distribution package
 	@mv $(DIST)/WiikeyFusion $(SVN_REVISION)
 	@mv $(DIST)/GCLoader $(SVN_REVISION)
 	@mv $(DIST)/ActionReplay $(SVN_REVISION)
-	@mv $(DIST)/USBGeckoRemoteServer $(SVN_REVISION)
 	@find ./$(SVN_REVISION) -type f -print0 | xargs -0 sha256sum > $(SVN_REVISION).sha256
 	@mv $(SVN_REVISION).sha256 $(SVN_REVISION)
 	@git log -n 4 > $(SVN_REVISION)-changelog.txt
@@ -138,5 +137,3 @@ build-gci: # make GCI for memory cards
 
 build-geckoserver:
 	@cd $(GECKOSERVER) && $(MAKE)
-	@mkdir $(DIST)/USBGeckoRemoteServer
-	@mv $(GECKOSERVER)/swissserver* $(DIST)/USBGeckoRemoteServer/
